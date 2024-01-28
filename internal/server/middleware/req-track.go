@@ -21,9 +21,16 @@ func TrackMiddleware() gin.HandlerFunc {
 		// Calculate the duration of the request
 		duration := time.Since(startTime)
 
+		service := (*string)(nil)
+
+		if len(c.Param("service")) > 0 {
+			serviceParam := c.Param("service")
+			service = &serviceParam
+		}
+
 		// Log information about the request, including status code
 		err := db.Model(&models.UserRequest{}).Create(&models.UserRequest{
-			Service:    c.Param("service"),
+			Service:    service,
 			Method:     c.Request.Method,
 			Path:       c.Request.URL.Path,
 			Code:       c.Writer.Status(),
