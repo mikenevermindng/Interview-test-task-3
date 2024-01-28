@@ -28,7 +28,7 @@ func GetUserRequests(c *gin.Context) {
 	}
 
 	var userRequests []models.UserRequest
-	query := dbClient.Model(&models.UserRequest{}).Order("created_at DESC NULLS LAST")
+	query := dbClient.Model(&models.UserRequest{}).Where("service IS NOT NULL").Order("created_at DESC NULLS LAST")
 	if len(service) > 0 {
 		query = query.Where("service = ?", service)
 	}

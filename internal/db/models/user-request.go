@@ -6,7 +6,7 @@ import (
 
 type UserRequest struct {
 	ID         int `gorm:"primaryKey;autoIncrement:true;unique"`
-	Service    string
+	Service    *string
 	Method     string
 	Path       string
 	Code       int
