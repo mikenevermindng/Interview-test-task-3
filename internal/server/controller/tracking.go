@@ -50,3 +50,47 @@ func GetUserRequests(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"success": true, "data": userRequests, "count": len(userRequests), "total": total})
 }
+
+func Stats(c *gin.Context) {
+	dbClient := dbconnection.GetDB()
+
+	var totalRequests int64
+	var topServices []struct {
+		Service string
+		Count   int
+	}
+
+	// Calculate total number of requests
+	err := dbClient.Model(&models.UserRequest{}).Where("service IS NOT NULL").Count(&totalRequests).Error
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success": false,
+			"message": "something went wrong",
+		})
+		return
+	}
+
+	// Query top 5 services with most requests
+	err = dbClient.Table("user_requests").
+		Select("service, COUNT(service) as count").
+		Where("service IS NOT NULL").
+		Group("service").
+		Order("count DESC").
+		Limit(5).
+		Scan(&topServices).Error
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success": false,
+			"message": "something went wrong",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"success":        true,
+		"total_requests": totalRequests,
+		"top_services":   topServices,
+	})
+}

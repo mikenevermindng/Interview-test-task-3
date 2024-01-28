@@ -24,6 +24,7 @@ func NewRouter() *gin.Engine {
 		{
 			tracking := admin.Group("/tracking")
 			tracking.GET("/user-requests", controller.GetUserRequests)
+			tracking.GET("/stats", controller.Stats)
 		}
 	}
 

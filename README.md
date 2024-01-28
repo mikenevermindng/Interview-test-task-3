@@ -101,6 +101,15 @@ curl --location --request GET '<host>:8080/v1/admin/tracking/user-requests?page=
 
 note: service is optional, admin_secret given in env file
 
+### Request user requests stats
+```shell
+curl --location '<host>:8080/v1/admin/tracking/stats' \
+--header 'ADMIN_SECRET: <admin_secret>'
+```
+
+note: admin_secret given in env file
+
+
 ## Architecture
 ![img_2.png](img_2.png)
 
