@@ -48,5 +48,5 @@ func GetUserRequests(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusInternalServerError, gin.H{"success": true, "data": userRequests, "count": len(userRequests), "total": total})
+	c.JSON(http.StatusOK, gin.H{"success": true, "data": userRequests, "count": len(userRequests), "total": total})
 }

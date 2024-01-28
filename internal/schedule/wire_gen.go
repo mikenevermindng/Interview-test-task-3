@@ -16,7 +16,7 @@ import (
 
 func CreateSchedule() (*Schedule, error) {
 	configuration := conf.NewConfiguration()
-	database := db.NewDatabase()
+	database := db.NewDatabase(configuration)
 	schedule := NewSchedule(configuration, database)
 	return schedule, nil
 }

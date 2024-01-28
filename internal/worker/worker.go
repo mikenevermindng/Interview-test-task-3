@@ -49,7 +49,7 @@ func (w *Worker) Start() {
 				fmt.Printf("Invalid site")
 			}
 			err, responseTime := w.monitor(uri)
-			var errMessage string
+			errMessage := (*string)(nil)
 			status := "UP"
 			if err != nil {
 				switch {
@@ -64,7 +64,8 @@ func (w *Worker) Start() {
 				default:
 					fmt.Printf("Error making request on %s: %s\n", uri, err)
 				}
-				errMessage = err.Error()
+				errStr := err.Error()
+				errMessage = &errStr
 				status = "DOWN"
 			}
 			fmt.Printf("response time of %s: %s\n", uri, responseTime)
@@ -75,7 +76,7 @@ func (w *Worker) Start() {
 				Uri:          site.GetUri(),
 				Ssl:          site.GetSsl(),
 				Timeout:      errors.Is(err, context.DeadlineExceeded),
-				Error:        &errMessage,
+				Error:        errMessage,
 				Status:       status,
 			})
 		}

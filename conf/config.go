@@ -16,6 +16,7 @@ type MonitorConfiguration struct {
 
 type ApiConfiguration struct {
 	AdminSecret string `mapstructure:"adminSecret"`
+	Port        int    `mapstructure:"port"`
 }
 
 type DbConfiguration struct {
