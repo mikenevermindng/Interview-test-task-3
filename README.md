@@ -140,6 +140,9 @@ The system is designed to monitor the availability and response time of services
 - **Scalability**: The system can accommodate a larger number of services without sacrificing performance or reliability.
 - **Efficient Monitoring**: With workload distribution, monitoring tasks can be completed more efficiently, ensuring timely and accurate monitoring results.
 
+## Issues
+Please see issues at [this](https://github.com/mikenevermindng/Interview-test-task-3/issues)
+
 ## Contributing
 
 Please contribute using [Github Flow](https://github.com/mikenevermindng/Interview-test-task-3). Create a branch, add commits, and [open a pull request](https://github.com/mikenevermindng/Interview-test-task-3/pulls).
