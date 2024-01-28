@@ -4,9 +4,24 @@ services:
   worker:
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: ScheduleDockerfile
     # If the container goes down, it will restart
     restart: always
+    volumes:
+      - ./env:/app/env
+      - ./gorm.db:/app/gorm.db
+      - ./sites.txt:/app/sites.txt
+    environment:
+      - APP_ENV=local
+
+  api:
+    build:
+      context: ./
+      dockerfile: ApiDockerfile
+    # If the container goes down, it will restart
+    restart: always
+    ports:
+      - "8080:8080"
     volumes:
       - ./env:/app/env
       - ./gorm.db:/app/gorm.db
