@@ -95,11 +95,11 @@ curl --location --request PATCH '<host>:8080/v1/service/jd.com' \
 ### Request user requests
 ```shell
 curl --location --request GET '<host>:8080/v1/admin/tracking/user-requests?page=<page>&limit=<limit>&service=<service>' \
---header 'ADMIN_SECRET: <admin secret>' \
+--header 'ADMIN_SECRET: <admin_secret>' \
 --header 'Content-Type: application/json'
 ```
 
-note: service is optional
+note: service is optional, admin_secret given in env file
 
 ## Architecture
 ![img_2.png](img_2.png)
