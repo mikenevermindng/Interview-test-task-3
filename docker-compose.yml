@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  worker:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    # If the container goes down, it will restart
+    restart: always
+    volumes:
+      - ./env:/app/env
+      - ./gorm.db:/app/gorm.db
+      - ./sites.txt:/app/sites.txt
+    environment:
+      - APP_ENV=local

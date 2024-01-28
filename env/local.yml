@@ -1,0 +1,9 @@
+monitor:
+  maxMonitorConcurrency: 100
+  monitorIntervalMs: 6000
+  maxRedirect: 5
+  requestTimeout: 5000
+api:
+  adminSecret: "wz$Z@%%oixtJ&^w&8Bae6^"
+database:
+  sqlite: "gorm.db"
