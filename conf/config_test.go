@@ -25,5 +25,7 @@ func TestNewConfiguration(t *testing.T) {
 	assert.Equal(t, 5, config.Monitor.MaxRedirect)
 	assert.Equal(t, 5000, config.Monitor.RequestTimeout)
 	assert.Equal(t, "wz$Z@%%oixtJ&^w&8Bae6^", config.Api.AdminSecret)
+	assert.Equal(t, 8080, config.Api.Port)
 	assert.Equal(t, "test.db", config.Database.Sqlite)
+
 }

@@ -105,7 +105,6 @@ func (sch *Schedule) readListServices() {
 	scanner := bufio.NewScanner(f)
 	scanner.Split(bufio.ScanWords)
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
 		uri := scanner.Text()
 		ssl := true
 		var lastHeartbeat models.HeartBeat

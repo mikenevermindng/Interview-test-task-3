@@ -9,7 +9,7 @@ import (
 var database = (*db.Database)(nil)
 
 func ConnectDatabase() {
-	newDb := db.NewDatabase()
+	newDb, _ := db.CreateDatabaseClient()
 	database = newDb
 }
 

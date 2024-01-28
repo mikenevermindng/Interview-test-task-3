@@ -5,5 +5,6 @@ monitor:
   requestTimeout: 5000
 api:
   adminSecret: "wz$Z@%%oixtJ&^w&8Bae6^"
+  port: 8080
 database:
   sqlite: "gorm.db"

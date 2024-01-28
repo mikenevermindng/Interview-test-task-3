@@ -15,8 +15,15 @@ func OnlyAdminMiddleware() gin.HandlerFunc {
 			apiConf := apiconf.GetConfig()
 			if apiConf.AdminSecret != adminSecret {
 				c.JSON(http.StatusUnauthorized, gin.H{"success": false, "message": "Unauthorized"})
+				c.Abort()
+				return
 			}
+			c.Next()
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{"success": false, "message": "Unauthorized"})
+			c.Abort()
+			return
 		}
-		c.Next()
+
 	}
 }
